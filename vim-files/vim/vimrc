@@ -232,6 +232,9 @@ nmap <leader>j <ESC>:RopeGotoDefinition<cr>
 nmap <leader>l <ESC>:TagbarToggle<cr>
 imap <leader>l <ESC>:TagbarToggle<cr>i
 
+" Syntastic settings
+let g:syntastic_html_tidy_ignore_errors = [ ' proprietary attribute "ng-' ]
+
 " Snipmate remap settings. It's binding overwritten standard
 " bindings.
 " Snipmate using bellow VIM's default keys, just unmap it.
