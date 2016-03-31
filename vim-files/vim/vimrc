@@ -233,7 +233,7 @@ nmap <leader>l <ESC>:TagbarToggle<cr>
 imap <leader>l <ESC>:TagbarToggle<cr>i
 
 " Syntastic settings
-let g:syntastic_html_tidy_ignore_errors = [ ' proprietary attribute "ng-' ]
+let g:syntastic_html_tidy_ignore_errors = [ ' proprietary attribute "ng-', "'<' + '/'" ]
 let g:syntastic_always_populate_loc_list=1
 
 " Snipmate remap settings. It's binding overwritten standard
