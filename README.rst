@@ -8,7 +8,8 @@ modified it to suit my own requirements.
 Vim Environment
 ---------------
 
-Plugins used are:-
+Plugins used are:-  
+
 1. auto-pairs   
 2. Command-T    - Fuzzy file search.
 3. minibufexpl  - Show vim buffers on separate virtual tabs.
@@ -26,9 +27,12 @@ How to Install
 
 1. Clone the repository
 2. Inside Dotfiles folder 
+
    $git submodule update --init --recursive
 3. Create symlinks
+
    $ln -s <path-to>Dotfiles/vim-files/vim .vim
+   
    $ln -s <path-to>Dotfiles/vim-files/vim/vimrc .vimrc
 
 Note: For Command-T and YouCompleteMe you might have to perform some additional
