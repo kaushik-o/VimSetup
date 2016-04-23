@@ -1,62 +1,34 @@
-My Dot Files
+My vimrc
 ============
 
-This repository keeps all of my Dot files, which are compatible with Gnu/Linux
-machines. It includes dot files for VIM and Bash right now.
+This repository keeps my vim setup (.vim and vimrc). It was originaly cloned
+from Haridas's repository https://github.com/haridas/Dotfiles. Over time I have
+mmodified it to suit my own requirements. 
 
 Vim Environment
 ---------------
 
-My VIM was initially setup for developing python projects. But lately I added 
-support for golang and scala, by default vim can be used for editing any text
-content, we add some plugins to get some extra features for some programming
-languages.  So you can use it for all general type
-programming and editing normal files
+Plugins used are:-
+1. auto-pairs   
+2. Command-T    - Fuzzy file search.
+3. minibufexpl  - Show vim buffers on separate virtual tabs.
+4. nerdtree     - File browser for vim.
+5. nerdcommenter   
+6. syntastic    - Syntax checker for different file types.
+7. tagbar       - Ctag based File analyzer.
+8. YouCompleteMe
 
-General purpose plugins are:-
-
-1. Command-T    - Fuzzy file search.
-2. minibufexpl  - Show vim buffers on separate virtual tabs.
-3. nerdtree     - File browser for vim.
-4. syntastic    - Syntax checker for different file types.
-5. tagbar       - Ctag based File analyzer.
-
-Language Specific plugins:-
-
-1. rope - For python code inspection.
-2. vim-go - For better golang support
-3. scala-vim - For better scala support.
-
-If any of you are interested to try out my vim setup you can run the following
-command to install this vim setup.
-
+If you are interested to try out my vim setup you can run the following
+steps.
 
 How to Install
 --------------
 
-Read installation steps given on my blog
-- http://haridas.in/vim-as-your-ide.html#setup-vim-from-scratch
+1. Clone the repository
+2. Inside Dotfiles folder 
+   $git submodule update --init --recursive
 
-
-More Details
-------------
-I wrote a blog post to explain more about vim environment setup and make it look
-like an IDE. You can read it from this link - http://haridas.in/vim-as-your-ide.html
-
-NOTE: The blog was written two years back, so some of the plugins are not being
-there right now on my github repo. Some of them are removed because it doesn't
-help much and some other plugins are being added to work with new
-projects.
-
-
-Screenshots
------------
-
-.. image:: ./screenshots/vim.png
-        :alt: Vim-screenshot-1
-
-.. image:: ./screenshots/vim1.png
-      :alt: vim-screenshots-2
-      
+Note: For Command-T and YouCompleteMe you might have to perform some additional
+steps to compile the plugins. PLease refer their respective setups.
 
 Thank you.

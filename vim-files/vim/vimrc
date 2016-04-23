@@ -208,7 +208,7 @@ endif
 " ========== Plugin Settings =========="
 
 " Mapping to NERDTree
-nmap <leader>ne :NERDTree<cr>
+nmap <leader>ne :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
 
 " Mapping to CtrlP
