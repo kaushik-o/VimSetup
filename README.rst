@@ -3,7 +3,7 @@ My vimrc
 
 This repository keeps my vim setup (.vim and vimrc). It was originaly cloned
 from Haridas's repository https://github.com/haridas/Dotfiles. Over time I have
-mmodified it to suit my own requirements. 
+modified it to suit my own requirements. 
 
 Vim Environment
 ---------------
@@ -27,8 +27,11 @@ How to Install
 1. Clone the repository
 2. Inside Dotfiles folder 
    $git submodule update --init --recursive
+3. Create symlinks
+   $ln -s <path-to>Dotfiles/vim-files/vim .vim
+   $ln -s <path-to>Dotfiles/vim-files/vim/vimrc .vimrc
 
 Note: For Command-T and YouCompleteMe you might have to perform some additional
-steps to compile the plugins. PLease refer their respective setups.
+steps to compile the plugins. Please refer their respective setups.
 
 Thank you.
