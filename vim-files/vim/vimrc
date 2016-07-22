@@ -217,12 +217,6 @@ nmap <leader>p :CtrlP<cr>
 " Mapping to Ycm GoTo subcommand
 nnoremap <leader>gt :YcmCompleter GoTo<cr>
 
-" Mini Buffer some settigns."
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
 " Tab color settings to make it more visible.
 hi MBEChanged ctermfg=white
 hi MBENormal ctermfg=white
