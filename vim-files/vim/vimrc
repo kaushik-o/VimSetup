@@ -207,6 +207,10 @@ endif
 
 " ========== Plugin Settings =========="
 
+" Mappings for Fuzzy Finder
+nmap ,f :FufCoverageFile<CR>
+nmap ,b :FufBuffer<CR>
+
 " Mapping to NERDTree
 nmap <leader>ne :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']

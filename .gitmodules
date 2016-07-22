@@ -22,3 +22,9 @@
 [submodule "vim-files/vim/bundle/YouCompleteMe"]
 	path = vim-files/vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "vim-files/vim/bundle/FuzzyFinder"]
+	path = vim-files/vim/bundle/FuzzyFinder
+	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule "vim-files/vim/bundle/vim-l9"]
+	path = vim-files/vim/bundle/vim-l9
+	url = https://github.com/eparreno/vim-l9.git
