@@ -1,10 +1,6 @@
 [submodule "vim-files/vim/bundle/nerdtree"]
 	path = vim-files/vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim-files/vim/bundle/minibufexpl"]
-	path = vim-files/vim/bundle/minibufexpl
-	url = https://github.com/fholgado/minibufexpl.vim.git
-    ignore = dirty
 [submodule "vim-files/vim/bundle/syntastic"]
 	path = vim-files/vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
