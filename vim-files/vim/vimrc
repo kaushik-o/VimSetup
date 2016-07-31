@@ -1,11 +1,21 @@
 " ========== Vim Basic Settings ============="
 
-" Pathogen settings.
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#infect()
-Helptags
-filetype plugin indent on
+" vim-plug settings
+call plug#begin('~/.vim/plugged')
+
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'eparreno/vim-l9' | Plug 'vim-scripts/FuzzyFinder'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
+Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'wincent/command-t', { 'do': 'cd ruby/command-t && ruby extconf.rb && make' } 
+
+call plug#end()
+
 
 " Make vim incompatbile to vi.
 set nocompatible
@@ -207,9 +217,11 @@ endif
 
 " ========== Plugin Settings =========="
 
-" Mappings for Fuzzy Finder
-nmap ,f :FufCoverageFile<CR>
+" Mapping for Fuzzy Finder
 nmap ,b :FufBuffer<CR>
+
+" Mapping for fzf-vim
+nmap ,f :Files<CR>
 
 " Mapping to NERDTree
 nmap <leader>ne :NERDTreeToggle<cr>
@@ -225,10 +237,6 @@ nnoremap <leader>gt :YcmCompleter GoTo<cr>
 hi MBEChanged ctermfg=white
 hi MBENormal ctermfg=white
 
-" Rope Plugin settings
-" imap <leader>j <ESC>:RopeGotoDefinition<cr>
-nmap <leader>j <ESC>:RopeGotoDefinition<cr>
-
 " Tagbar key bindings."
 nmap <leader>l <ESC>:TagbarToggle<cr>
 imap <leader>l <ESC>:TagbarToggle<cr>i
@@ -236,6 +244,7 @@ imap <leader>l <ESC>:TagbarToggle<cr>i
 " Syntastic settings
 let g:syntastic_html_tidy_ignore_errors = [ ' proprietary attribute "ng-', "'<' + '/'" ]
 let g:syntastic_always_populate_loc_list=1
+
 
 " Snipmate remap settings. It's binding overwritten standard
 " bindings.
