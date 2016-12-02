@@ -41,6 +41,7 @@ syntax on
 
 " Fold settings
 set foldmethod=indent
+set foldlevelstart=20
 
 "set cursorline
 set ttyfast
@@ -97,19 +98,6 @@ set formatoptions=qrn1
 " To  show special characters in Vim
 "set list
 set listchars=tab:▸\ ,eol:¬
-
-" Naviagations using keys up/down/left/right
-" Disabling default keys to learn the hjkl
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
-nnoremap j gj
-nnoremap k gk
 
 " Rope settings."
 inoremap <leader>j <ESC>:RopeGotoDefinition<cr>
@@ -177,6 +165,9 @@ augroup END
 
 nnoremap g; g;zz
 
+"Setting for find in files
+nmap <F3> :grep -inr<space>
+
 " =========== END Basic Vim Settings ===========
 
 
@@ -203,6 +194,8 @@ else
     hi Comment ctermfg=226
 endif
 
+" Open js files without extension
+set suffixesadd+=.js
 " Special Settings for Consoles
 "if !has("gui_running")
 "    set t_Co=256
