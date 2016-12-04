@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
 Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wincent/command-t', { 'do': 'cd ruby/command-t && ruby extconf.rb && make' } 
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -185,7 +186,6 @@ if has("gui_running")
     set listchars=tab:▸\ ,eol:¬         " Invisibles using the Textmate style
 else
     set t_Co=256
-    colorschem molokai
     "colorschem torte
     hi Normal ctermbg=NONE
     hi NonText ctermbg=NONE
@@ -209,6 +209,9 @@ set suffixesadd+=.js
 
 
 " ========== Plugin Settings =========="
+
+set background=dark
+colorscheme gruvbox
 
 " Mapping for Fuzzy Finder
 nmap ,b :FufBuffer<CR>
