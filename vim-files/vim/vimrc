@@ -253,6 +253,9 @@ let g:syntastic_always_populate_loc_list=1
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+" removing conflict between YouCompleteMe and Eclim autocomplete
+let g:EclimCompletionMethod = 'omnifunc'
+
 
 " =========== END Plugin Settings =========="
 "
