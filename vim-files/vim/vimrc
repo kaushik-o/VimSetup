@@ -10,8 +10,6 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
 Plug 'majutsushi/tagbar'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'wincent/command-t', { 'do': 'cd ruby/command-t && ruby extconf.rb && make' } 
 Plug 'morhetz/gruvbox'
 
 call plug#end()
@@ -22,9 +20,9 @@ set nocompatible
 set modelines=0
 
 "TAB settings.
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 " More Common Settings.
@@ -74,6 +72,11 @@ set backupskip=/tmp/*,/private/tmp/*"
 
 " Enable Mouse
 set mouse=a
+
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
 
 "Settings for Searching and Moving
 nnoremap / /\v
@@ -212,18 +215,15 @@ set suffixesadd+=.js
 set background=dark
 colorscheme gruvbox
 
-" Mapping for Fuzzy Finder
-nmap ,b :CtrlPBuffer<CR>
+" Mapping for fzf-vim Fuzzy Finder
+nmap <leader>b :Buffers<CR>
 
 " Mapping for fzf-vim
-nmap ,f :Files<CR>
+nmap <leader>f :Files<CR>
 
 " Mapping to NERDTree
 nmap <leader>ne :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
-
-" Mapping to CtrlP
-nmap <leader>p :CtrlP<cr>
 
 " Mapping to Ycm GoTo subcommand
 nnoremap <leader>gt :YcmCompleter GoTo<cr>
