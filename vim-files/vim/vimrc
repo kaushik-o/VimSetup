@@ -84,7 +84,6 @@ nnoremap / /\v
 vnoremap / /\v
 set ignorecase
 set smartcase
-set gdefault
 set incsearch
 set showmatch
 set hlsearch
@@ -243,6 +242,7 @@ imap <leader>l <ESC>:TagbarToggle<cr>i
 " Syntastic settings
 let g:syntastic_html_tidy_ignore_errors = [ ' proprietary attribute "ng-', "'<' + '/'" ]
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_python_checkers=['flake8']
 
 
 " Snipmate remap settings. It's binding overwritten standard
