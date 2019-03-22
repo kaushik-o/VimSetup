@@ -8,10 +8,11 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-fugitive', { 'on': [] }
 
 call plug#end()
 
@@ -219,6 +220,8 @@ set suffixesadd+=.js
 set background=dark
 colorscheme gruvbox
 
+" fzf settings
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " Mapping for fzf-vim Fuzzy Finder
 nmap <leader>b :Buffers<CR>
 
@@ -257,9 +260,17 @@ let g:syntastic_python_checkers=['flake8']
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" removing conflict between YouCompleteMe and Eclim autocomplete
-let g:EclimCompletionMethod = 'omnifunc'
+" Vim Fugitive 
+command! Gstatus call LazyLoadFugitive('Gstatus')
+command! Gdiff call LazyLoadFugitive('Gdiff')
+command! Glog call LazyLoadFugitive('Glog')
+command! Gblame call LazyLoadFugitive('Gblame')
 
+function! LazyLoadFugitive(cmd)
+  call plug#load('vim-fugitive')
+  call fugitive#detect(expand('%:p'))
+  exe a:cmd
+endfunction
 
 " =========== END Plugin Settings =========="
 "
