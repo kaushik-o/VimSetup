@@ -1,10 +1,16 @@
 " ========== Vim Basic Settings ============="
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " vim-plug settings
 call plug#begin('~/.vim/plugged')
 
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer'  }
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
@@ -22,9 +28,9 @@ set nocompatible
 set modelines=0
 
 "TAB settings.
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 " More Common Settings.
@@ -63,7 +69,7 @@ set matchtime=3
 let mapleader = ","
 """"
 " Set title to window
-set title 
+set title
 " Dictionary path, from which the words are being looked up.
 set dictionary=/usr/share/dict/words
 
@@ -209,7 +215,10 @@ set suffixesadd+=.js
 "    colorschem badwolf
 "endif
 
-" Source the vimrc file after saving it
+" Remove trailing whitespaces
+autocmd BufWritePre * %s/\s\+$//e
+
+"Source the vimrc file after saving it
 "autocmd bufwritepost .vimrc source ~/.vimrc
 
 " ========== END Gvim Settings ==========
@@ -235,6 +244,9 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
 " Mapping to Ycm GoTo subcommand
 nnoremap <leader>gt :YcmCompleter GoTo<cr>
 
+" Mapping to Ycm GoToReferences subcommand
+nnoremap <leader>gr :YcmCompleter GoToReferences<cr>
+
 " Tab color settings to make it more visible.
 hi MBEChanged ctermfg=white
 hi MBENormal ctermfg=white
@@ -247,6 +259,18 @@ imap <leader>l <ESC>:TagbarToggle<cr>i
 let g:syntastic_html_tidy_ignore_errors = [ ' proprietary attribute "ng-', "'<' + '/'" ]
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_python_checkers=['flake8']
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_eslint_generic = 1
+" " let g:syntastic_javascript_eslint_exec = '/bin/ls'
+" let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint --'
+
 
 
 " Snipmate remap settings. It's binding overwritten standard
@@ -260,7 +284,7 @@ let g:syntastic_python_checkers=['flake8']
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" Vim Fugitive 
+" Vim Fugitive
 command! Gstatus call LazyLoadFugitive('Gstatus')
 command! Gdiff call LazyLoadFugitive('Gdiff')
 command! Glog call LazyLoadFugitive('Glog')
