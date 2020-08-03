@@ -8,7 +8,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer'  }
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
+Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle'  }
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
