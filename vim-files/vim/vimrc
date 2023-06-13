@@ -6,19 +6,25 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" fzf setting
+set rtp+=/opt/homebrew/opt/fzf
+
 " vim-plug settings
 call plug#begin('~/.vim/plugged')
 
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --ts-completer'  }
-Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle'  }
 Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-fugitive', { 'on': [] }
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 call plug#end()
 
@@ -28,9 +34,9 @@ set nocompatible
 set modelines=0
 
 "TAB settings.
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 " More Common Settings.
@@ -241,11 +247,9 @@ nmap <leader>f :Files<CR>
 nmap <leader>ne :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
 
-" Mapping to Ycm GoTo subcommand
-nnoremap <leader>gt :YcmCompleter GoTo<cr>
-
-" Mapping to Ycm GoToReferences subcommand
-nnoremap <leader>gr :YcmCompleter GoToReferences<cr>
+" Mapping for vim-gitgutter
+nmap <Leader>gn <Plug>(GitGutterNextHunk)  " git next
+nmap <Leader>gp <Plug>(GitGutterPrevHunk)  " git previous
 
 " Tab color settings to make it more visible.
 hi MBEChanged ctermfg=white
@@ -271,8 +275,6 @@ let g:syntastic_python_checkers=['flake8']
 " " let g:syntastic_javascript_eslint_exec = '/bin/ls'
 " let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint --'
 
-
-
 " Snipmate remap settings. It's binding overwritten standard
 " bindings.
 " Snipmate using bellow VIM's default keys, just unmap it.
@@ -284,17 +286,21 @@ let g:syntastic_python_checkers=['flake8']
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" Vim Fugitive
-command! Gstatus call LazyLoadFugitive('Gstatus')
-command! Gdiff call LazyLoadFugitive('Gdiff')
-command! Glog call LazyLoadFugitive('Glog')
-command! Gblame call LazyLoadFugitive('Gblame')
+let g:coc_global_extensions = ['coc-pyright', 'coc-tsserver', 'coc-emmet', 'coc-html', 'coc-css', 'coc-pairs', 'coc-json', 'coc-sh']
 
-function! LazyLoadFugitive(cmd)
-  call plug#load('vim-fugitive')
-  call fugitive#detect(expand('%:p'))
-  exe a:cmd
-endfunction
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" GoTo code navigation.
+nmap <silent><leader>gd <Plug>(coc-definition)
+nmap <silent><leader>gy <Plug>(coc-type-definition)
+nmap <silent><leader>gi <Plug>(coc-implementation)
+nmap <silent><leader>gr <Plug>(coc-references)
+
+" Resume latest coc list
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " =========== END Plugin Settings =========="
 "
