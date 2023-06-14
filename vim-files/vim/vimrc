@@ -50,6 +50,7 @@ set wildmenu
 set wildmode=list:longest
 set visualbell
 set cursorline
+set autoread
 syntax on
 
 " Fold settings
