@@ -23,8 +23,9 @@ Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'zivyangll/git-blame.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -88,11 +89,7 @@ set backupskip=/tmp/*,/private/tmp/*"
 
 " Enable Mouse
 set mouse=a
-
-if &term =~ '^screen'
-    " tmux knows the extended mouse mode
-    set ttymouse=xterm2
-endif
+set ttymouse=xterm2
 
 "Settings for Searching and Moving
 nnoremap / /\v
@@ -302,6 +299,9 @@ nmap <silent><leader>gr <Plug>(coc-references)
 
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" Git blame
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 " =========== END Plugin Settings =========="
 "
